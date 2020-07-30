@@ -25,7 +25,7 @@
 
 -->
 
-This is `terraform-aws-cloudwatch-events` that create CloudWatch Events rules and according targets.
+This is `terraform-aws-cloudwatch-events` module that creates CloudWatch Events rules and according targets.
 > Amazon CloudWatch Events delivers a near real-time stream of system events that describe changes in Amazon Web Services (AWS) resources. Using simple rules that you can quickly set up, you can match events and route them to one or more target functions or streams. CloudWatch Events becomes aware of operational changes as they occur. CloudWatch Events responds to these operational changes and takes corrective action as necessary, by sending messages to respond to the environment, activating functions, making changes, and capturing state information.
 
 
@@ -105,14 +105,13 @@ Available targets:
 | Name | Version |
 |------|---------|
 | terraform | >= 0.12.0, < 0.14.0 |
-| local | ~> 1.2 |
-| random | ~> 2.2 |
+| aws | ~> 2.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | n/a |
+| aws | ~> 2.0 |
 
 ## Inputs
 
