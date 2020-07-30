@@ -1,6 +1,6 @@
 region    = "us-east-2"
 namespace = "eg"
-name      = "health-ec2-scheduled-change"
+name      = "health-ec2-issue"
 stage     = "test"
 
 sns_topic_allowed_aws_services_for_sns_published = ["events.amazonaws.com"]
