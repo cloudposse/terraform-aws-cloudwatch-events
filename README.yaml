@@ -5,7 +5,7 @@
 #
 
 # Name of this project
-name: terraform-example-module
+name: terraform-aws-cloudwatch-events
 
 # Logo for this project
 #logo: docs/logo.png
@@ -20,13 +20,13 @@ copyrights:
     year: "2020"
 
 # Canonical GitHub repo
-github_repo: cloudposse/terraform-example-module
+github_repo: cloudposse/terraform-aws-cloudwatch-events
 
 # Badges to display
 badges:
   - name: "Latest Release"
-    image: "https://img.shields.io/github/release/cloudposse/terraform-example-module.svg"
-    url: "https://github.com/cloudposse/terraform-example-module/releases/latest"
+    image: "https://img.shields.io/github/release/cloudposse/terraform-aws-cloudwatch-events.svg"
+    url: "https://github.com/cloudposse/terraform-aws-cloudwatch-events/releases/latest"
   - name: "Slack Community"
     image: "https://slack.cloudposse.com/badge.svg"
     url: "https://slack.cloudposse.com"
@@ -36,29 +36,29 @@ badges:
 
 # List any related terraform modules that this module may be used with or that this module depends on.
 related:
-  - name: "terraform-null-label"
-    description: "Terraform module designed to generate consistent names and tags for resources. Use terraform-null-label to implement a strict naming convention."
-    url: "https://github.com/cloudposse/terraform-null-label"
+  - name: "terraform-aws-sns-topic"
+    description: "Terraform Module to Provide an Amazon Simple Notification Service (SNS)"
+    url: "https://github.com/cloudposse/terraform-aws-sns-topic"
+  - name: "terraform-aws-sns-cloudwatch-sns-alarms"
+    description: "Terraform module that configures CloudWatch SNS alerts for SNS"
+    url: "https://github.com/cloudposse/terraform-aws-sns-cloudwatch-sns-alarms"
 
 # List any resources helpful for someone to get started. For example, link to the hashicorp documentation or AWS documentation.
 references:
-  - name: "Terraform Standard Module Structure"
-    description: "HashiCorp's standard module structure is a file and directory layout we recommend for reusable modules distributed in separate repositories."
-    url: "https://www.terraform.io/docs/modules/index.html#standard-module-structure"
-  - name: "Terraform Module Requirements"
-    description: "HashiCorp's guidance on all the requirements for publishing a module. Meeting the requirements for publishing a module is extremely easy."
-    url: "https://www.terraform.io/docs/registry/modules/publish.html#requirements"
-  - name: "Terraform `random_integer` Resource"
-    description: "The resource random_integer generates random values from a given range, described by the min and max attributes of a given resource."
-    url: "https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/integer"
-  - name: "Terraform Version Pinning"
-    description: "The required_version setting can be used to constrain which versions of the Terraform CLI can be used with your configuration"
-    url: "https://www.terraform.io/docs/configuration/terraform.html#specifying-a-required-terraform-version"
+  - name: "What Is Amazon CloudWatch Events?"
+    description: "AWS CloudWatch Events documentation."
+    url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/WhatIsCloudWatchEvents.html
+  - name: "Terraform `aws_cloudwatch_event_rule` Resource"
+    description: "Provides a CloudWatch Event Rule resource."
+    url: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_rule
+  - name: "Terraform `aws_cloudwatch_event_target` Resource"
+    description: "Provides a CloudWatch Event Target resource."
+    url: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_target
 
 # Short description of this project
 description: |-
-  This is `terraform-example-module` project provides all the scaffolding for a typical well-built Cloud Posse module. It's a template repository you can
-  use when creating new repositories.
+  This is `terraform-aws-cloudwatch-events` module that creates CloudWatch Events rules and according targets.
+  > Amazon CloudWatch Events delivers a near real-time stream of system events that describe changes in Amazon Web Services (AWS) resources. Using simple rules that you can quickly set up, you can match events and route them to one or more target functions or streams. CloudWatch Events becomes aware of operational changes as they occur. CloudWatch Events responds to these operational changes and takes corrective action as necessary, by sending messages to respond to the environment, activating functions, making changes, and capturing state information.
 
 # Introduction to the project
 #introduction: |-
@@ -69,16 +69,21 @@ usage: |-
   Here's how to invoke this example module in your projects
 
   ```hcl
-  module "example" {
-    source = "https://github.com/cloudposse/terraform-example-module.git?ref=master"
-    example = "Hello world!"
+  module "cloudwatch_event" {
+    source = "https://github.com/cloudposse/terraform-aws-cloudwatch-events.git?ref=master"
+
+    name          = var.name
+    namespace     = var.namespace
+    stage         = var.stage
+
+    cloudwatch_event_rule_description = var.cloudwatch_event_rule_description
+    cloudwatch_event_rule_pattern_json = var.cloudwatch_event_rule_pattern_json
+    cloudwatch_event_target_arn = module.sns.sns_topic.arn
   }
   ```
 
 # Example usage
-examples: |-
-  Here is an example of using this module:
-  - [`examples/complete`](https://github.com/cloudposse/terraform-example-module/) - complete example of using this module
+#examples: |-
 
 # How to get started quickly
 #quickstart: |-
@@ -91,5 +96,5 @@ include:
 
 # Contributors to this project
 contributors:
-  - name: "Erik Osterman"
-    github: "osterman"
+  - name: "Marcin Brański"
+    github: "3h4x"

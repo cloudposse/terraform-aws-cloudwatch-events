@@ -24,9 +24,10 @@ func TestExamplesComplete(t *testing.T) {
 	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
 	terraform.InitAndApply(t, terraformOptions)
 
-	// Run `terraform output` to get the value of an output variable
-	outputExample := terraform.Output(t, terraformOptions, "example")
+	outputCloudWatchEventRuleARN := terraform.Output(t, terraformOptions, "aws_cloudwatch_event_rule_arn")
 
-	// Verify we're getting back the outputs we expect
-	assert.Regexp(t, "^Hello world! [0-9]+$", outputExample)
+	// Verify that ARN for CloudWatch Event Rula is created as expected
+	assert.Regexp(t, "^arn:aws:events:us-east-2:\\d+:rule\\/eg-test-health-ec2-issue\\d+$", outputCloudWatchEventRuleARN)
+
+
 }
