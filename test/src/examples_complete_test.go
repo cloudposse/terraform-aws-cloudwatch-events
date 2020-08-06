@@ -27,7 +27,7 @@ func TestExamplesComplete(t *testing.T) {
 	outputCloudWatchEventRuleARN := terraform.Output(t, terraformOptions, "aws_cloudwatch_event_rule_arn")
 
 	// Verify that ARN for CloudWatch Event Rula is created as expected
-	assert.Regexp(t, "^arn:aws:events:us-east-2:\\d+:rule\\/eg-test-health-ec2-issue\\d+$", outputCloudWatchEventRuleARN)
+	assert.Regexp(t, "^arn:aws:events:us-east-2:\\d+:rule\\/eg-test-health-ec2-issue$", outputCloudWatchEventRuleARN)
 
 
 }
