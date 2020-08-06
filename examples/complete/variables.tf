@@ -69,7 +69,7 @@ variable "cloudwatch_event_rule_description" {
   default     = ""
 }
 
-variable "cloudwatch_event_rule_pattern_json" {
-  type        = string
-  description = "(Required, if schedule_expression isn't specified) Event pattern described a JSON object. See full documentation of CloudWatch Events and Event Patterns for details. http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CloudWatchEventsandEventPatterns.html"
+variable "cloudwatch_event_rule_pattern" {
+  description = "Event pattern described a HCL map which will be encoded as JSON with jsonencode function. See full documentation of CloudWatch Events and Event Patterns for details. http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CloudWatchEventsandEventPatterns.html"
 }
+

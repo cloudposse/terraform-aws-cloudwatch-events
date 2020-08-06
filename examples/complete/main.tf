@@ -21,7 +21,7 @@ module "cloudwatch_event" {
   namespace = var.namespace
   stage     = var.stage
 
-  cloudwatch_event_rule_description  = var.cloudwatch_event_rule_description
-  cloudwatch_event_rule_pattern_json = var.cloudwatch_event_rule_pattern_json
-  cloudwatch_event_target_arn        = module.sns.sns_topic.arn
+  cloudwatch_event_rule_description = var.cloudwatch_event_rule_description
+  cloudwatch_event_rule_pattern     = var.cloudwatch_event_rule_pattern
+  cloudwatch_event_target_arn       = module.sns.sns_topic.arn
 }
