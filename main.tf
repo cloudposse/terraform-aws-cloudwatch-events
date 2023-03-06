@@ -8,7 +8,9 @@ module "rule_label" {
 }
 
 resource "aws_cloudwatch_event_rule" "this" {
-  name        = module.rule_label.id
+  # If `name_prefix` is set (not null) then do not set `name`
+  name        = var.cloudwatch_event_name_prefix != null ?  null : module.rule_label.id
+  name_prefix  = var.cloudwatch_event_name_prefix
   is_enabled  = var.cloudwatch_event_rule_is_enabled
   description = var.cloudwatch_event_rule_description != "" ? var.cloudwatch_event_rule_description : module.rule_label.id_full
 
@@ -20,4 +22,3 @@ resource "aws_cloudwatch_event_target" "this" {
   target_id = var.cloudwatch_event_target_id
   arn       = var.cloudwatch_event_target_arn
 }
-

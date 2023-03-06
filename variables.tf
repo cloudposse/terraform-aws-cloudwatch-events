@@ -25,3 +25,8 @@ variable "cloudwatch_event_target_arn" {
   description = "The Amazon Resource Name (ARN) associated of the target."
 }
 
+variable "cloudwatch_event_name_prefix" {
+  type        = string
+  description = "A prefix for AWS to use in generating a random name. If set, will override `var.name`"
+  default     = null
+}
