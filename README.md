@@ -161,6 +161,7 @@ Available targets:
 |------|-------------|------|---------|:--------:|
 | <a name="input_additional_tag_map"></a> [additional\_tag\_map](#input\_additional\_tag\_map) | Additional key-value pairs to add to each map in `tags_as_list_of_maps`. Not added to `tags` or `id`.<br>This is for some rare cases where resources want additional configuration of tags<br>and therefore take a list of maps with tag key, value, and additional configuration. | `map(string)` | `{}` | no |
 | <a name="input_attributes"></a> [attributes](#input\_attributes) | ID element. Additional attributes (e.g. `workers` or `cluster`) to add to `id`,<br>in the order they appear in the list. New attributes are appended to the<br>end of the list. The elements of the list are joined by the `delimiter`<br>and treated as a single ID element. | `list(string)` | `[]` | no |
+| <a name="input_cloudwatch_event_name_prefix"></a> [cloudwatch\_event\_name\_prefix](#input\_cloudwatch\_event\_name\_prefix) | A prefix for AWS to use in generating a random name. If set, will override `var.name` | `string` | `null` | no |
 | <a name="input_cloudwatch_event_rule_description"></a> [cloudwatch\_event\_rule\_description](#input\_cloudwatch\_event\_rule\_description) | The description of the rule. | `string` | `""` | no |
 | <a name="input_cloudwatch_event_rule_is_enabled"></a> [cloudwatch\_event\_rule\_is\_enabled](#input\_cloudwatch\_event\_rule\_is\_enabled) | Whether the rule should be enabled. | `bool` | `true` | no |
 | <a name="input_cloudwatch_event_rule_pattern"></a> [cloudwatch\_event\_rule\_pattern](#input\_cloudwatch\_event\_rule\_pattern) | Event pattern described a HCL map which will be encoded as JSON with jsonencode function. See full documentation of CloudWatch Events and Event Patterns for details. http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CloudWatchEventsandEventPatterns.html | `any` | n/a | yes |
@@ -290,7 +291,7 @@ In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
 
 ## Copyrights
 
-Copyright © 2020-2022 [Cloud Posse, LLC](https://cloudposse.com)
+Copyright © 2020-2023 [Cloud Posse, LLC](https://cloudposse.com)
 
 
 
@@ -359,7 +360,7 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
 
 [![README Footer][readme_footer_img]][readme_footer_link]
 [![Beacon][beacon]][website]
-
+<!-- markdownlint-disable -->
   [logo]: https://cloudposse.com/logo-300x69.svg
   [docs]: https://cpco.io/docs?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-cloudwatch-events&utm_content=docs
   [website]: https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-cloudwatch-events&utm_content=website
@@ -390,3 +391,4 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
   [share_googleplus]: https://plus.google.com/share?url=https://github.com/cloudposse/terraform-aws-cloudwatch-events
   [share_email]: mailto:?subject=terraform-aws-cloudwatch-events&body=https://github.com/cloudposse/terraform-aws-cloudwatch-events
   [beacon]: https://ga-beacon.cloudposse.com/UA-76589703-4/cloudposse/terraform-aws-cloudwatch-events?pixel&cs=github&cm=readme&an=terraform-aws-cloudwatch-events
+<!-- markdownlint-restore -->
