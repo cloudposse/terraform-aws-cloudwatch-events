@@ -1,6 +1,6 @@
 module "rule_label" {
   source  = "cloudposse/label/null"
-  version = "0.22.0" // requires Terraform >= 0.12.26
+  version = "0.25.0" // requires Terraform >= 0.12.26
 
   id_length_limit = 64
 
