@@ -145,7 +145,7 @@ Available targets:
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_rule_label"></a> [rule\_label](#module\_rule\_label) | cloudposse/label/null | 0.22.0 |
+| <a name="module_rule_label"></a> [rule\_label](#module\_rule\_label) | cloudposse/label/null | 0.25.0 |
 | <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.25.0 |
 
 ## Resources
