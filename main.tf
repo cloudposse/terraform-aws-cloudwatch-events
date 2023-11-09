@@ -12,7 +12,7 @@ resource "aws_cloudwatch_event_rule" "this" {
   is_enabled  = var.cloudwatch_event_rule_is_enabled
   description = var.cloudwatch_event_rule_description != "" ? var.cloudwatch_event_rule_description : module.rule_label.id_full
 
-  event_pattern = jsonencode(var.cloudwatch_event_rule_pattern)
+  event_pattern = var.cloudwatch_event_rule_pattern
 }
 
 resource "aws_cloudwatch_event_target" "this" {
