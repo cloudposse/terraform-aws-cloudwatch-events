@@ -17,7 +17,7 @@ license: "APACHE2"
 copyrights:
   - name: "Cloud Posse, LLC"
     url: "https://cloudposse.com"
-    year: "2020"
+    year: "2024"
 
 # Canonical GitHub repo
 github_repo: cloudposse/terraform-aws-cloudwatch-events
@@ -70,10 +70,12 @@ usage: |-
 
   ```hcl
   module "cloudwatch_event" {
-    source = "https://github.com/cloudposse/terraform-aws-cloudwatch-events.git?ref=master"
+    source = "https://github.com/cloudposse/terraform-aws-cloudwatch-events.git?ref=main"
 
     name          = var.name
     namespace     = var.namespace
+    tenant        = var.tenant
+    environment   = var.environment
     stage         = var.stage
 
     cloudwatch_event_rule_description = var.cloudwatch_event_rule_description
