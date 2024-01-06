@@ -1,5 +1,6 @@
 region    = "us-east-2"
 namespace = "eg"
+tenant    = "core"
 name      = "health-ec2-issue"
 stage     = "test"
 
@@ -22,5 +23,3 @@ cloudwatch_event_rule_pattern = {
     ]
   }
 }
-
-

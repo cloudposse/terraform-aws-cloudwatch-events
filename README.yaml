@@ -70,10 +70,13 @@ usage: |-
 
   ```hcl
   module "cloudwatch_event" {
-    source = "https://github.com/cloudposse/terraform-aws-cloudwatch-events.git?ref=master"
+    source = "cloudposse/cloudwatch-events/aws"
+    version = "0.7.0"
 
     name          = var.name
     namespace     = var.namespace
+    tenant        = var.tenant
+    environment   = var.environment
     stage         = var.stage
 
     cloudwatch_event_rule_description = var.cloudwatch_event_rule_description
