@@ -62,7 +62,8 @@ Here's how to invoke this example module in your projects
 
 ```hcl
 module "cloudwatch_event" {
-  source = "https://github.com/cloudposse/terraform-aws-cloudwatch-events.git?ref=main"
+  source = "cloudposse/cloudwatch-events/aws"
+  version = "0.7.0"
 
   name          = var.name
   namespace     = var.namespace
@@ -269,7 +270,7 @@ under the License.
 All other trademarks referenced herein are the property of their respective owners.
 ## Copyrights
 
-Copyright © 2024-2024 [Cloud Posse, LLC](https://cloudposse.com)
+Copyright © 2020-2024 [Cloud Posse, LLC](https://cloudposse.com)
 
 [![README Footer][readme_footer_img]][readme_footer_link]
 [![Beacon][beacon]][website]
