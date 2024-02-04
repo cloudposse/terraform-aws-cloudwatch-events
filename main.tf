@@ -19,5 +19,6 @@ resource "aws_cloudwatch_event_target" "this" {
   rule      = aws_cloudwatch_event_rule.this.name
   target_id = var.cloudwatch_event_target_id
   arn       = var.cloudwatch_event_target_arn
+  role_arn  = var.cloudwatch_event_target_role_arn
 }
 

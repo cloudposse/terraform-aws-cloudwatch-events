@@ -25,3 +25,8 @@ variable "cloudwatch_event_target_arn" {
   description = "The Amazon Resource Name (ARN) associated of the target."
 }
 
+variable "cloudwatch_event_target_role_arn" {
+  type        = string
+  description = "IAM role to be used for this target when the rule is triggered."
+}
+
