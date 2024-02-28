@@ -28,5 +28,6 @@ variable "cloudwatch_event_target_arn" {
 variable "cloudwatch_event_target_role_arn" {
   type        = string
   description = "IAM role to be used for this target when the rule is triggered."
+  default     = null
 }
 
