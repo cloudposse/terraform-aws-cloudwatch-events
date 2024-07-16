@@ -5,3 +5,4 @@ repository:
   description: Terraform Module for provisioning CloudWatch Events rules connected with targets.
   homepage: https://cloudposse.com/accelerate
   topics: terraform, terraform-module, cloudwatch, cloudwatch-events, aws, hcl2
+
