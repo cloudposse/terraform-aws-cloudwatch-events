@@ -13,6 +13,8 @@ resource "aws_cloudwatch_event_rule" "this" {
   description = var.cloudwatch_event_rule_description != "" ? var.cloudwatch_event_rule_description : module.rule_label.id_full
 
   event_pattern = jsonencode(var.cloudwatch_event_rule_pattern)
+
+  tags = module.this.tags
 }
 
 resource "aws_cloudwatch_event_target" "this" {
