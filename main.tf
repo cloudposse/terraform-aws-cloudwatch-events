@@ -1,12 +1,9 @@
 locals {
-  use_deprecated_enabled = (
-    var.cloudwatch_event_rule_is_enabled != null &&
-    var.cloudwatch_event_rule_state == "ENABLED"
+  cloudwatch_event_rule_state = (
+    var.cloudwatch_event_rule_is_enabled == null
+    ? var.cloudwatch_event_rule_state
+    : (var.cloudwatch_event_rule_is_enabled ? "ENABLED" : "DISABLED")
   )
-
-  cloudwatch_event_rule_state = local.use_deprecated_enabled ? (
-    var.cloudwatch_event_rule_is_enabled == true ? "ENABLED" : "DISABLED"
-  ) : var.cloudwatch_event_rule_state
 }
 
 
