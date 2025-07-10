@@ -2,8 +2,11 @@
 
 <!-- markdownlint-disable -->
 <a href="https://cpco.io/homepage"><img src="https://github.com/cloudposse/terraform-aws-cloudwatch-events/blob/main/.github/banner.png?raw=true" alt="Project Banner"/></a><br/>
-    <p align="right">
-<a href="https://github.com/cloudposse/terraform-aws-cloudwatch-events/releases/latest"><img src="https://img.shields.io/github/release/cloudposse/terraform-aws-cloudwatch-events.svg?style=for-the-badge" alt="Latest Release"/></a><a href="https://github.com/cloudposse/terraform-aws-cloudwatch-events/commits"><img src="https://img.shields.io/github/last-commit/cloudposse/terraform-aws-cloudwatch-events.svg?style=for-the-badge" alt="Last Updated"/></a><a href="https://cloudposse.com/slack"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a></p>
+
+
+<p align="right"><a href="https://github.com/cloudposse/terraform-aws-cloudwatch-events/releases/latest"><img src="https://img.shields.io/github/release/cloudposse/terraform-aws-cloudwatch-events.svg?style=for-the-badge" alt="Latest Release"/></a><a href="https://github.com/cloudposse/terraform-aws-cloudwatch-events/commits"><img src="https://img.shields.io/github/last-commit/cloudposse/terraform-aws-cloudwatch-events.svg?style=for-the-badge" alt="Last Updated"/></a><a href="https://cloudposse.com/slack"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a><a href="https://cloudposse.com/support/"><img src="https://img.shields.io/badge/Get_Support-success.svg?style=for-the-badge" alt="Get Support"/></a>
+
+</p>
 <!-- markdownlint-restore -->
 
 <!--
@@ -115,9 +118,9 @@ module "cloudwatch_event" {
 | <a name="input_additional_tag_map"></a> [additional\_tag\_map](#input\_additional\_tag\_map) | Additional key-value pairs to add to each map in `tags_as_list_of_maps`. Not added to `tags` or `id`.<br/>This is for some rare cases where resources want additional configuration of tags<br/>and therefore take a list of maps with tag key, value, and additional configuration. | `map(string)` | `{}` | no |
 | <a name="input_attributes"></a> [attributes](#input\_attributes) | ID element. Additional attributes (e.g. `workers` or `cluster`) to add to `id`,<br/>in the order they appear in the list. New attributes are appended to the<br/>end of the list. The elements of the list are joined by the `delimiter`<br/>and treated as a single ID element. | `list(string)` | `[]` | no |
 | <a name="input_cloudwatch_event_rule_description"></a> [cloudwatch\_event\_rule\_description](#input\_cloudwatch\_event\_rule\_description) | The description of the rule. | `string` | `""` | no |
-| <a name="input_cloudwatch_event_rule_is_enabled"></a> [cloudwatch\_event\_rule\_is\_enabled](#input\_cloudwatch\_event\_rule\_is\_enabled) | Deprecated: Use `cloudwatch_event_rule_state` instead: Whether the rule should be enabled. | `bool` | `null` | no |
+| <a name="input_cloudwatch_event_rule_is_enabled"></a> [cloudwatch\_event\_rule\_is\_enabled](#input\_cloudwatch\_event\_rule\_is\_enabled) | DEPRECATED (use `cloudwatch_event_rule_state` instead): Whether the rule should be enabled. Conflicts with `cloudwatch_event_rule_is_enabled` | `bool` | `null` | no |
 | <a name="input_cloudwatch_event_rule_pattern"></a> [cloudwatch\_event\_rule\_pattern](#input\_cloudwatch\_event\_rule\_pattern) | Event pattern described a HCL map which will be encoded as JSON with jsonencode function. See full documentation of CloudWatch Events and Event Patterns for details. http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CloudWatchEventsandEventPatterns.html | `any` | n/a | yes |
-| <a name="input_cloudwatch_event_rule_state"></a> [cloudwatch\_event\_rule\_state](#input\_cloudwatch\_event\_rule\_state) | State of the rule. Valid values are `DISABLED`, `ENABLED`, and `ENABLED_WITH_ALL_CLOUDTRAIL_MANAGEMENT_EVENTS`. When state is `ENABLED`, the rule is enabled for all events except those delivered by CloudTrail. To also enable the rule for events delivered by CloudTrail, set state to `ENABLED_WITH_ALL_CLOUDTRAIL_MANAGEMENT_EVENTS`. Conflicts with `cloudwatch_event_rule_is_enabled`. | `string` | `ENABLED` | no |
+| <a name="input_cloudwatch_event_rule_state"></a> [cloudwatch\_event\_rule\_state](#input\_cloudwatch\_event\_rule\_state) | State of the rule. Valid values are DISABLED, ENABLED, and ENABLED\_WITH\_ALL\_CLOUDTRAIL\_MANAGEMENT\_EVENTS.<br/>When state is ENABLED, the rule is enabled for all events except those delivered by CloudTrail.<br/>To also enable the rule for events delivered by CloudTrail, set state to ENABLED\_WITH\_ALL\_CLOUDTRAIL\_MANAGEMENT\_EVENTS. | `string` | `"ENABLED"` | no |
 | <a name="input_cloudwatch_event_target_arn"></a> [cloudwatch\_event\_target\_arn](#input\_cloudwatch\_event\_target\_arn) | The Amazon Resource Name (ARN) associated of the target. | `string` | n/a | yes |
 | <a name="input_cloudwatch_event_target_id"></a> [cloudwatch\_event\_target\_id](#input\_cloudwatch\_event\_target\_id) | The unique target assignment ID. If missing, will generate a random, unique id. | `string` | `null` | no |
 | <a name="input_cloudwatch_event_target_role_arn"></a> [cloudwatch\_event\_target\_role\_arn](#input\_cloudwatch\_event\_target\_role\_arn) | IAM role to be used for this target when the rule is triggered. | `string` | `null` | no |
@@ -233,6 +236,38 @@ In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
  6. Submit a **Pull Request** so that we can review your changes
 
 **NOTE:** Be sure to merge the latest changes from "upstream" before making a pull request!
+
+
+## Running Terraform Tests
+
+We use [Atmos](https://atmos.tools) to streamline how Terraform tests are run. It centralizes configuration and wraps common test workflows with easy-to-use commands.
+
+All tests are located in the [`test/`](test) folder.
+
+Under the hood, tests are powered by Terratest together with our internal [Test Helpers](https://github.com/cloudposse/test-helpers) library, providing robust infrastructure validation.
+
+Setup dependencies:
+- Install Atmos ([installation guide](https://atmos.tools/install/))
+- Install Go [1.24+ or newer](https://go.dev/doc/install)
+- Install Terraform or OpenTofu
+
+To run tests:
+
+- Run all tests:  
+  ```sh
+  atmos test run
+  ```
+- Clean up test artifacts:  
+  ```sh
+  atmos test clean
+  ```
+- Explore additional test options:  
+  ```sh
+  atmos test --help
+  ```
+The configuration for test commands is centrally managed. To review what's being imported, see the [`atmos.yaml`](https://raw.githubusercontent.com/cloudposse/.github/refs/heads/main/.github/atmos/terraform-module.yaml) file.
+
+Learn more about our [automated testing in our documentation](https://docs.cloudposse.com/community/contribute/automated-testing/) or implementing [custom commands](https://atmos.tools/core-concepts/custom-commands/) with atmos.
 
 ### 🌎 Slack Community
 
