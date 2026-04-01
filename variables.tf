@@ -34,3 +34,15 @@ variable "cloudwatch_event_target_role_arn" {
   description = "IAM role to be used for this target when the rule is triggered."
   default     = null
 }
+
+variable "dead_letter_queue_enabled" {
+  type        = bool
+  description = "Enable a Dead Letter Queue (SQS) for failed event deliveries. Useful for troubleshooting delivery issues."
+  default     = false
+}
+
+variable "dead_letter_queue_message_retention_seconds" {
+  type        = number
+  description = "Number of seconds to retain messages in the Dead Letter Queue."
+  default     = 1209600 # 14 days (AWS default for DLQs)
+}
