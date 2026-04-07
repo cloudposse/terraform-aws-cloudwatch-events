@@ -10,10 +10,10 @@ output "aws_cloudwatch_event_rule_arn" {
 
 output "dead_letter_queue_arn" {
   description = "The ARN of the Dead Letter Queue."
-  value       = one(aws_sqs_queue.dlq[*].arn)
+  value       = try(aws_sqs_queue.dlq[0].arn, null)
 }
 
 output "dead_letter_queue_url" {
   description = "The URL of the Dead Letter Queue."
-  value       = one(aws_sqs_queue.dlq[*].url)
+  value       = try(aws_sqs_queue.dlq[0].url, null)
 }
